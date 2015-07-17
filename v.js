@@ -6,34 +6,39 @@ var V = function (x, y){
 
 V.prototype = {
 
-  current: function(){
+  info: function(){
     console.log('x: ' + this.x, 'y: ' + this.y);
   },
   clone: function (){
     return new V(this.x, this.y)
   },
+  feed: function (vector){
+    this.x = vector.x;
+    this.y = vector.y;
+  },
   add: function (vector){
-    this.x + vector.x;
-    this.y + vector.y;
+    this.x += vector.x;
+    this.y += vector.y;
   },
   sub: function (vector){
-    this.x - vector.x;
-    this.y - vector.y;
+    this.x -= vector.x;
+    this.y -= vector.y;
   },
   mult: function (n){
-    this.x * n;
-    this.y * n;
+    this.x *= n;
+    this.y *= n;
   },
   div: function (n){
-    this.x / n;
-    this.y / n;
+    this.x /= n;
+    this.y /= n;
   },
   mag: function (){
     return Math.sqrt( (this.x * this.x) + (this.y * this.y) )
   },
   dir: function (target){
     var current = this.clone();
-    return current.sub(target);
+    current.sub(target);
+    return current
   },
   limit: function (n){
     this.x = (this.x < n) ? this.x : n;
@@ -53,5 +58,3 @@ V.prototype = {
     this.y = -this.y;
   }
 }
-
-return V
