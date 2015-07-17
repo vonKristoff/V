@@ -30,7 +30,15 @@ V.prototype = {
   },
   mag: function (){
     return Math.sqrt( (this.x * this.x) + (this.y * this.y) )
-  }
+  },
+  dir: function (target){
+    var current = this.clone();
+    return current.sub(target);
+  },
+  limit: function (n){
+    this.x = (this.x < n) ? this.x : n;
+    this.y = (this.y < n) ? this.y : n;
+  },
   normalise: function (){
     var m = this.mag();
 
@@ -40,6 +48,10 @@ V.prototype = {
   dot: function (vector) {
     return (this.x * vector.x) + (this.y * vector.y) ;
   },
+  reverse: function (){
+    this.x = -this.x;
+    this.y = -this.y;
+  }
 }
 
 return V
