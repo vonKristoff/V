@@ -21,8 +21,8 @@ V.prototype = {
     this.y += vector.y;
   },
   sub: function (vector){
-    this.x -= vector.x;
-    this.y -= vector.y;
+    this.x = vector.x - this.x;
+    this.y = vector.y - this.y;
   },
   mult: function (n){
     this.x *= n;
